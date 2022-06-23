@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8mb4" collation="utf8mb4_general_ci">tesis</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="detalle_ticket" view="colnames">
+<left>444</left>
+<top>270</top>
+<width>104</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `detalle_ticket` (
+  `Nro_ticket` int(11) NOT NULL AUTO_INCREMENT,
+  `Numero` int(11) NOT NULL,
+  `Servicio` int(11) NOT NULL,
+  `Cantidad` tinyint(200) NOT NULL,
+  `TotalDls` decimal(15,2) NOT NULL,
+  `TotalBs` decimal(15,2) NOT NULL,
+  PRIMARY KEY (`Nro_ticket`),
+  KEY `Numero` (`Numero`),
+  KEY `Servicio` (`Servicio`),
+  CONSTRAINT `detalle_ticket_ibfk_1` FOREIGN KEY (`Numero`) REFERENCES `ticket` (`Codigo`),
+  CONSTRAINT `detalle_ticket_ibfk_2` FOREIGN KEY (`Servicio`) REFERENCES `servicio` (`Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="rol_usuario" view="colnames">
+<left>645</left>
+<top>57</top>
+<width>89</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `rol_usuario` (
+  `Id_Rol` int(11) NOT NULL AUTO_INCREMENT,
+  `Rol_id` int(11) DEFAULT NULL,
+  `Usuario` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`Id_Rol`),
+  KEY `Rol_id` (`Rol_id`),
+  KEY `Usuario` (`Usuario`),
+  CONSTRAINT `Rol_id` FOREIGN KEY (`Rol_id`) REFERENCES `rol` (`Rol_id`),
+  CONSTRAINT `Usuario` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="rol" view="colnames">
+<left>449</left>
+<top>59</top>
+<width>96</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `rol` (
+  `Rol_id` int(11) NOT NULL,
+  `Desc_rol` varchar(252) NOT NULL,
+  PRIMARY KEY (`Rol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="servicio" view="colnames">
+<left>252</left>
+<top>211</top>
+<width>112</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `servicio` (
+  `Codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(300) NOT NULL,
+  `Precio` decimal(15,2) NOT NULL,
+  `Estatus` char(1) NOT NULL,
+  PRIMARY KEY (`Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="usuario" view="colnames">
+<left>844</left>
+<top>153</top>
+<width>112</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `usuario` (
+  `Usuario` varchar(15) NOT NULL,
+  `Contraseña` varchar(25) NOT NULL,
+  `Nombres` varchar(25) NOT NULL,
+  `Apellidos` varchar(25) NOT NULL,
+  `Email` varchar(25) NOT NULL,
+  `Telefono` varchar(25) NOT NULL,
+  `Estatus` char(1) NOT NULL,
+  PRIMARY KEY (`Usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="ticket" view="colnames">
+<left>639</left>
+<top>285</top>
+<width>113</width>
+<height>170</height>
+<sql_create_table>CREATE TABLE `ticket` (
+  `Codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `Cliente` varchar(15) NOT NULL,
+  `Comentario` varchar(400) DEFAULT NULL,
+  `Total` decimal(15,2) NOT NULL,
+  `Divisa` decimal(15,2) NOT NULL,
+  PRIMARY KEY (`Codigo`),
+  KEY `Cliente` (`Cliente`),
+  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`Cliente`) REFERENCES `usuario` (`Usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
