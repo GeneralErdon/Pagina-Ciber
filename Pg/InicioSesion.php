@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="../Libs/bootstrap.css">
-    <link rel="stylesheet" href="Estilo.css">
+    <link rel="stylesheet" href="../Libs/Estilo.css">
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg navbar-expand-md bg-dark">
@@ -40,7 +40,7 @@
                 
                 >Contáctenos</a>
 
-              <a class="nav-link" href="#">Inicio de Sesión</a>
+              <a class="nav-link" href="../Pg/InicioSesion.php">Inicio de Sesión</a>
               <a class="nav-link" href="Registro.html">Registrarse</a>
             </div>
           </div>
@@ -51,7 +51,7 @@
           <div class="row">
           <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 bg-gradient text-light mg-form">
         <h1>Inicia Sesión</h1>
-        <form action="#" method="get" class="py-3" id="form_InicioSesion">
+        <form action="../Libs/validar.php" method="post" class="py-3" id="form_InicioSesion">
             <div class="mb-3">
   
               <label for="user" class="form-label">Ingrese el Usuario</label>
@@ -79,7 +79,7 @@
 
 
 
-      <footer class="footer card-footer bg-dark text-light">
+      <!-- <footer class="footer card-footer bg-dark text-light">
         <h2>Autores</h2>
         <p>Leandro Fermín</p>
         <p>Giancarlo Tedesco</p>
@@ -87,7 +87,7 @@
         <p>leandrofermin@gmail.com</p>
         <p>giancarlotedesco11@gmail.com</p>
         
-    </footer>
+    </footer> -->
 
 
 
